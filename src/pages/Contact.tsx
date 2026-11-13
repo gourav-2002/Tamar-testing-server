@@ -1,34 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { motion } from 'motion/react';
 import { Helmet } from 'react-helmet-async';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
-// import ContactForm from '../components/ContactForm';
 
 const Contact = () => {
-  useEffect(() => {
-    // Remove existing script if re-mounting
-    const existingScript = document.querySelector('script[src="https://app.valaclaims.com/embed/vala-forms.js"]');
-    if (existingScript) {
-      existingScript.remove();
-    }
-
-    const script = document.createElement('script');
-    script.src = 'https://app.valaclaims.com/embed/vala-forms.js';
-    script.setAttribute('data-form-id', '200');
-    script.setAttribute('data-api-url', 'https://app.valaclaims.com/api/v1');
-    script.setAttribute('data-target', '#vala-form-200');
-    script.async = true;
-
-    document.body.appendChild(script);
-
-    return () => {
-      if (document.body.contains(script)) {
-        document.body.removeChild(script);
-      }
-    };
-  }, []);
 
   return (
     <>
@@ -114,10 +91,14 @@ const Contact = () => {
               </div>
 
               {/* VALA Intake Form Integration */}
-              <div id="vala-form-200" className="w-full min-h-[400px]"></div>
-
-              {/* Previous Contact Form (commented out as requested) */}
-              {/* <ContactForm mode="single" /> */}
+              <iframe
+                src="https://app.valaclaims.com/embed/form?id=200"
+                width="100%"
+                height="800"
+                frameBorder="0"
+                style={{ border: 'none', maxWidth: '640px' }}
+                title="VA Benefits Case Review Form"
+              />
             </motion.div>
 
             {/* Disclaimer Note */}
